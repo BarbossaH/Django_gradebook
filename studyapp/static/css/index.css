@@ -1,0 +1,11 @@
+#my-div {
+  display: block;
+  width: 100%;
+  background: url('/static/img/beauty1.jpg') no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100px;
+  color: red;
+  line-height: 100px;
+  padding-left: 20px;
+}

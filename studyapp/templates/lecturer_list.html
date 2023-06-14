@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%extends 'main.html'%} {%block content %}
+
+    <h1 class="bg-success" style="text-align: center">Lecturer</h1>
+    <hr />
+    <div style="margin-bottom: 10px" class="clearfix">
+      <a
+        href="/lecturer/lecturer_add/"
+        class="btn btn-success btn-lg active"
+        role="button"
+      >
+        + Add Lecturer</a
+      >
+      <div class="input-group mb-3" style="float: right; width: 360px">
+        <form method="get" class="form-inline">
+          <input
+            name="q"
+            type="text"
+            class="form-control"
+            placeholder="Enter Year such as 2023"
+            aria-label="Search"
+            aria-describedby="button-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-warning btn-outline-secondary"
+              type="submit"
+              id="button-addon2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>StaffID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>DOB</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for lecturer in lecturerList%}
+        <tr>
+          <td>{{lecturer.staffId}}</td>
+          <td>{{lecturer.firstname}}</td>
+          <td>{{lecturer.lastname}}</td>
+          <td>{{lecturer.email}}</td>
+          <td>{{lecturer.courses}}</td>
+          <td>{{lecturer.DOB}}</td>
+          <!-- <td>{{lecturer.semesters.all}}</td> -->
+          <td>
+            <a
+              class="btn btn-success btn-xs"
+              href="/lecturer/{{lecturer.id}}/lecturer_update/"
+              >Edit</a
+            >
+            <a
+              class="btn btn-danger btn-xs"
+              href="/lecturer/{{lecturer.id}}/lecturer_delete/"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {{page_string}}
+      </ul>
+    </nav>
+    {%endblock content %}
+  </body>
+</html>

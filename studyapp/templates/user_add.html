@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%extends 'main.html'%} {%block content %}
+    <h1 style="text-align: center">Add user</h1>
+    <hr />
+    <div>
+      <div class="container">
+        <form class="form-horizontal" method="post" novalidate>
+          {%csrf_token%} {%for field in form%}
+          <div class="form-group">
+            <label> {{field.label}}</label>
+            {{field}}
+            <span style="color: red"> {{field.errors.0}}</span>
+          </div>
+          {%endfor%}
+          <!-- <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"
+              >USERNAME
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                placeholder="username"
+                name="username"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"
+              >Gender
+            </label>
+            <div class="col-sm-10">
+              <select class="form-control" name="" id="">
+                {%for item in gender%}
+                <option value="{{item.0}}">{{item.1}}</option>
+                {%endfor%}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">AGE</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                placeholder="age"
+                name="age"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label"
+              >PASSWORD</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword3"
+                placeholder="Password"
+                name="password"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label"
+              >Department</label
+            >
+            <div class="col-sm-10">
+              <select name="title" id="" class="form-control">
+                {%for dep in department%}
+                <option value="{{dep.id}}">{{dep.title}}</option>
+                {%endfor%}
+              </select>
+            </div>
+          </div> -->
+          <div style="text-align: center">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="margin-top: 15px"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- <form method="post">
+      {%csrf_token%}
+      <input
+        type="text"
+        name="username"
+        placeholder="Enter username"
+        value=""
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter password"
+        value=""
+      />
+      <input type="text" name="age" placeholder="Enter age" value="" />
+    </form> -->
+
+    <!-- <input type="text" class="btn btn-primary" value="new one" /> -->
+    {%endblock content %}
+  </body>
+</html>

@@ -1,0 +1,67 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/index.css' %}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="bg-success" style="text-align: center">Marks</h1>
+      <hr />
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Mark</th>
+            <th>Email</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for enroll in studentList%}
+          <tr>
+            <td>{{enroll.enrolled_student}}</td>
+            <td>{{enroll.mark}}</td>
+            <td>{{enroll.enrolled_student.email}}</td>
+            <td>
+              {%if department == "lecturer" %}
+              <a
+                class="btn btn-success btn-xs"
+                href="/marks/{{enroll.id}}/marks_update/"
+                >Edit</a
+              >
+              <a
+                class="btn btn-danger btn-xs"
+                href="/marks/{{enroll.id}}/send_email/"
+                >SendEmail</a
+              >
+              {%endif%}
+            </td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          {{page_string}}
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

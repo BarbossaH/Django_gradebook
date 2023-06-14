@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%extends 'main.html'%} {%block content %}
+    <h1 class="bg-success" style="text-align: center">Department</h1>
+    <hr />
+    <a class="btn btn-success btn-xs" href="department_add">Add Department</a>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Department</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for dep in depList%}
+        <tr>
+          <td>{{dep.id}}</td>
+          <td>{{dep.title}}</td>
+          <td>
+            <a
+              class="btn btn-danger btn-xs"
+              href="/department/{{dep.id}}/department_delete/"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    {%endblock content %}
+  </body>
+</html>
